@@ -5,22 +5,22 @@ const verifyJWT = require('../utils/verifyJWT');
 const userRouter = express.Router();
 
 userRouter.route('/')
-    .get(verifyJWT, getAll)
+    .get(getAll)
     .post(create);
 
 userRouter.route('/verify/:code')
-    .get(verifyEmail)
+    .get()
 
 userRouter.route('/login')
     .post(login);
 
 userRouter.route('/me')
-    .get(verifyJWT, getLoggedUser);
+    .get(getLoggedUser);
 
 userRouter.route('/:id')
-    .get(verifyJWT, getOne)
-    .delete(verifyJWT, remove)
-    .put(verifyJWT, update);
+    .get(getOne)
+    .delete(remove)
+    .put(update);
 
 
 
